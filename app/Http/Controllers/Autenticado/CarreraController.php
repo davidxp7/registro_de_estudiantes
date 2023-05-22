@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Autenticado;
 
 use App\Http\Controllers\Controller;
+use App\Models\Carrera;
 use Illuminate\Http\Request;
 
 class CarreraController extends Controller
@@ -12,7 +13,11 @@ class CarreraController extends Controller
      */
     public function index()
     {
-        return view('autenticado.carreras.index');
+        $carreras = Carrera::all();
+
+        $data = compact('carreras');
+
+        return view('autenticado.carreras.index',$data);
     }
 
     /**

@@ -14,11 +14,14 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
-            @yield('contenido')
+            <div class="mt-2">
+                @yield('contenido')
+            </div>
+
         </div>
     </body>
 </html>
