@@ -58,7 +58,9 @@ class CarreraController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $carrera = Carrera::find($id);
+
+        return view('autenticado.carreras.edit',compact('carrera'));
     }
 
     /**
@@ -66,7 +68,17 @@ class CarreraController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //$customer->user()->update($request->only($validate));
+        $this->validate($request,[
+            'nombre' => 'required|min:3|max:50',
+            'descripcion' => 'required|min:3|max:255',
+            'valor_semestre' => 'required|numeric'
+        ]);
+
+
+        $carrera = Carrera::find($id);
+        $carrera->update($request->all());
+
+        return redirect()->route('carreras.index')->with('success','Nueva Carrera Actualizada Con Exito!!');
     }
 
     /**
