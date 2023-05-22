@@ -4,6 +4,7 @@ use App\Http\Controllers\Autenticado\AutenticadoController;
 use App\Http\Controllers\Autenticado\CarreraController;
 use App\Http\Controllers\Autenticado\EstudianteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[PublicController::class,'index'])->name('public');
+Route::get('/public/carrera/{id}',[PublicController::class,'show'])->name('public.carrera');
+Route::get('/public/registro/{id}',[PublicController::class,'create'])->name('public.registro');
+Route::get('/registro/estudiante',[PublicController::class,'store'])->name('registro.estudiante');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
