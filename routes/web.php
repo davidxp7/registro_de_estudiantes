@@ -22,6 +22,8 @@ Route::get('/',[PublicController::class,'index'])->name('public');
 Route::get('/public/carrera/{id}',[PublicController::class,'show'])->name('public.carrera');
 Route::get('/public/registro/{id}',[PublicController::class,'create'])->name('public.registro');
 Route::get('/registro/estudiante',[PublicController::class,'store'])->name('registro.estudiante');
+Route::get('/mensaje',[PublicController::class,'mensaje'])->name('registro.mensaje');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -50,7 +50,7 @@ class PublicController extends Controller
 
         Estudiante::create($request->all());
 
-        return redirect()->route('public');
+        return redirect()->route('registro.mensaje');
     }
 
     /**
@@ -62,6 +62,12 @@ class PublicController extends Controller
 
         return view('carrera',compact('carrera'));
     }
+
+    public function mensaje()
+    {
+        return view('mensaje');
+    }
+
 
     /**
      * Show the form for editing the specified resource.
