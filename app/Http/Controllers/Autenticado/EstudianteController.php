@@ -66,7 +66,10 @@ class EstudianteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $carreras = Carrera::all();
+        $estudiante = Estudiante::find($id);
+
+        return view('autenticado.estudiantes.edit',compact('estudiante','carreras'));
     }
 
     /**
@@ -74,7 +77,24 @@ class EstudianteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required',
+            'fecha_nacimiento' => 'required|date',
+            'nacionalidad' => 'required',
+            'identificacion_tipo' => 'required',
+            'direccion' => 'required',
+            'telefono' => 'required',
+            'email' => 'required|email',
+            'carrera_id' => 'required|exists:carreras,id',
+            'documento_identidad' => 'required',
+            'forma_pago' => 'required',
+        ]);
+
+        $estudiante = Estudiante::find($id);
+
+        $estudiante->update($request->all());
+
+        return redirect()->route('estudiantes.index')->with('success','Estudiante Actualizado Con Exito!!!');
     }
 
     /**
