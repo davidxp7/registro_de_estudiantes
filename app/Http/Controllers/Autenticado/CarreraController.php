@@ -50,7 +50,10 @@ class CarreraController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $carrera = Carrera::findOrFail($id);
+        $estudiantes = $carrera->estudiantes;
+        
+        return view('autenticado.carreras.show',compact('carrera','estudiantes'));
     }
 
     /**
