@@ -14,4 +14,9 @@ class Carrera extends Model
         'descripcion',
         'valor_semestre',
     ];
+
+    public function estudiantes()
+    {
+        return $this->hasMany(Estudiante::class);
+    }
 }
