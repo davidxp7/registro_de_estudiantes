@@ -25,7 +25,7 @@ class CarreraController extends Controller
      */
     public function create()
     {
-        //
+        return view('autenticado.carreras.create');
     }
 
     /**
@@ -33,7 +33,16 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:3|max:50',
+            'descripcion' => 'required|min:3|max:255',
+            'valor_semestre' => 'required|numeric'
+        ]);
+
+        $carrera = Carrera::create($request->all());
+
+        return redirect()->route('carreras.index')->with('success','Nueva Carrera Agregada Con Exito!!');
+
     }
 
     /**
@@ -57,7 +66,7 @@ class CarreraController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //$customer->user()->update($request->only($validate));
     }
 
     /**

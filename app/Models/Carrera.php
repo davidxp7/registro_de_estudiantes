@@ -11,7 +11,7 @@ class Carrera extends Model
 
     protected $fillable = [
         'nombre',
-        'descripcin',
+        'descripcion',
         'valor_semestre',
     ];
 }

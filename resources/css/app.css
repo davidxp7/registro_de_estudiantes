@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 .btn-new{
-    @apply p-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white m-5 flex items-center
+    @apply p-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white mx-5 flex items-center gap-2
+}
+
+.btn-primary{
+    @apply p-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white flex items-center gap-2
+}
+
+.btn-danger{
+    @apply p-2 rounded-lg bg-red-500 hover:bg-red-600 text-white flex items-center gap-2
+}
+
+.btn-add{
+    @apply p-2 rounded-lg bg-green-500 hover:bg-green-600 text-white
 }
