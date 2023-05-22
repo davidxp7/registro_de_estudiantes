@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Autenticado;
 
 use App\Http\Controllers\Controller;
+use App\Models\Carrera;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,9 @@ class EstudianteController extends Controller
      */
     public function create()
     {
-        //
+        $carreras = Carrera::all();
+        
+        return view('autenticado.estudiantes.create',compact('carreras'));
     }
 
     /**
@@ -31,7 +34,23 @@ class EstudianteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required',
+            'fecha_nacimiento' => 'required|date',
+            'nacionalidad' => 'required',
+            'identificacion_tipo' => 'required',
+            'direccion' => 'required',
+            'telefono' => 'required',
+            'email' => 'required|email|unique:estudiantes',
+            'carrera_id' => 'required|exists:carreras,id',
+            'documento_identidad' => 'required|unique:estudiantes',
+            'forma_pago' => 'required',
+        ]);
+
+        Estudiante::create($request->all());
+
+        return redirect()->route('estudiantes.index')->with('success','Estudiante Registrado Con Exito!!!');
+
     }
 
     /**
