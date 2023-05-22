@@ -50,7 +50,15 @@
             ->placeholder('Institución anterior')
             ->helpText('Introduzca la institución anterior del estudiante (opcional)') }}
         
-        {{ Aire::select($carreras->pluck('nombre', 'id'), 'carrera_id', 'Carrera') }}
+        @if ($carreras->count() == 0)
+            <div class="text-lg my-2">
+                No hay carreras creadas por lo que no puedes crear un usuario..
+            </div>
+        @else
+
+         {{ Aire::select($carreras->pluck('nombre', 'id'), 'carrera_id', 'Carrera') }}
+
+        @endif
 
         {{ Aire::number('documento_identidad', 'Documento de identidad')
             ->placeholder(0)
