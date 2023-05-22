@@ -21,6 +21,11 @@
                         {{ __('Carreras') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('estudiantes.index')" :active="request()->routeIs('estudiantes.index')">
+                        {{ __('Estudiantes') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
