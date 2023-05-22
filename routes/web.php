@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard',[AutenticadoController::class, 'index'])->name('dashboard');
 
+    Route::resource('/carreras',CarreraController::class);
+
 });
 
 require __DIR__.'/auth.php';
