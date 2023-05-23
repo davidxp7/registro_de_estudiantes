@@ -15,8 +15,11 @@
     @else
 
         <div class="p-10 bg-white rounded-lg">
+            
+            <h1 class="text-2xl font-bold text-center">SELECCIONA LA CARRERA A LA CUAL SE REGISTRARA!! </h1>
 
             @foreach ($carreras as $carrera )
+
                 <tr>
                     <td>
                         <div class="flex flex-col gap-4 my-2">
